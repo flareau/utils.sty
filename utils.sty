@@ -1,0 +1,78 @@
+% =============================================
+% Utility macros
+% François Lareau <first.lastname@umontreal.ca>
+% OLST, Université de Montréal
+% =============================================
+
+\ProvidesPackage{utils}
+
+\RequirePackage{todonotes}
+\RequirePackage{relsize}
+\RequirePackage{listings}
+\RequirePackage{textalpha}
+
+
+% General macros
+% ==========================================
+\providecommand{\scare}[1]{``#1''}					% Scare quotes
+\providecommand{\strong}[1]{\textbf{#1}}		% Strong emphasis
+\providecommand{\term}[1]{\textsf{#1}}			% New term
+\providecommand{\draft}[1]{{\color{red}#1}}	% Draft text
+
+
+% Code listings
+% ==========================================
+% Allow accented characters in code
+
+\lstset{
+	basicstyle=\ttfamily\small,
+	frame=single,
+	tabsize=2,
+	breaklines=true,
+	breakatwhitespace=true,
+	literate=
+	  {~}{{$\sim$}}1
+		{à}{{\`a}}1
+		{â}{{\^a}}1
+		{é}{{\'e}}1
+		{è}{{\`e}}1
+		{ê}{{\^e}}1
+		{ë}{{\"e}}1
+		{î}{{\^i}}1
+		{ï}{{\"i}}1
+		{ô}{{\^o}}1
+		{ù}{{\`u}}1
+		{û}{{\^u}}1
+		{ü}{{\"u}}1
+		{ç}{{\c{c}}}1
+		{À}{{\`A}}1
+		{Â}{{\^A}}1
+		{É}{{\'E}}1
+		{È}{{\`E}}1
+		{Ê}{{\^E}}1
+		{Ë}{{\"E}}1
+		{Î}{{\^I}}1
+		{Ï}{{\"I}}1
+		{Ô}{{\^O}}1
+		{Ù}{{\`U}}1
+		{Û}{{\^U}}1
+		{Ü}{{\"U}}1
+		{Ç}{{\C{C}}}1
+		{α}{{\textalpha}}1
+}
+
+
+% Figures
+% ==========================================
+% Arguments:
+% 	#1 	file extension (optional, default=pdf)
+%		#2	filename, which is also the label (with a fig: prefix)
+%		#3 	caption
+
+\providecommand{\fig}[3][pdf]{
+	\begin{figure}[tbh!]
+	\centering
+	\IfFileExists{figs/#2.#1}{\includegraphics{figs/#2}}{\missingfigure{#2.#1}}
+	\caption{#3}\label{fig:#2}
+	\end{figure}
+}

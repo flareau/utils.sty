@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{utils}
+
+\title{Macros générales \LaTeX}
+\author{François Lareau\\OLST, Université de Montréal}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Macros générales}
+
+\begin{itemize}
+	\item Guillemets de réserve: ce qu'on appelle des \scare{scare quotes}
+	\item Emphase: pour mettre une plus forte \strong{emphase} sur un mot.
+	\item Terme: pour mettre en évidence un nouveau \term{terme} dans le texte.
+	\item Brouillon: \draft{notes rapides, à réécrire clean plus tard}
+\end{itemize}
+
+
+\section{Code}
+
+On peut insérer des caractères accentués dans les extraits de code.
+
+\begin{lstlisting}
+\begin{itemize}
+	\item Guillemets de réserve: ce qu'on appelle des \scare{scare quotes}
+	\item Emphase: pour mettre une plus forte \strong{emphase} sur un mot.
+	\item Terme: pour mettre en évidence un nouveau \term{terme} dans le texte.
+	\item Brouillon: \draft{notes rapides, à réécrire clean plus tard}
+\end{itemize}
+\end{lstlisting}
+
+
+\section{Figures}
+
+Pour insérer une figure externe, la commande \lstinline{\fig} est pratique. Elle demande trois arguments:
+
+\begin{enumerate}
+	\item L'extension du fichier à insérer (cet argument est optionnel; par défaut sa valeur est \lstinline{pdf}).
+	\item Le nom du fichier; cette chaîne de caractères sera aussi le label à utiliser pour les références (avec le préfixe \lstinline{fig:}).
+	\item La légende
+\end{enumerate}
+
+Par exemple, \lstinline|\fig[png]{test}{Une jolie figure}| produit ceci:
+
+\fig[png]{test}{Une jolie figure}
+
+Le fichier à insérer doit se trouver dans le répertoire \lstinline{figs}. Comme on peut voir à la figure~\ref{fig:test}, un message d'erreur s'affiche si le fichier n'existe pas.
+
+\end{document}
