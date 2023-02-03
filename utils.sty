@@ -6,7 +6,7 @@
 
 \ProvidesPackage{utils}
 
-\RequirePackage{todonotes}
+\RequirePackage{xcolor}
 \RequirePackage{relsize}
 \RequirePackage{listings}
 \RequirePackage{textalpha}
@@ -72,7 +72,7 @@
 \providecommand{\fig}[3][pdf]{
 	\begin{figure}[tbh!]
 	\centering
-	\IfFileExists{figs/#2.#1}{\includegraphics{figs/#2}}{\missingfigure{#2.#1}}
+	\IfFileExists{figs/#2.#1}{\includegraphics{figs/#2}}{{\Huge\bf\color{red}\fbox{Missing: #2.#1}}}
 	\caption{#3}\label{fig:#2}
 	\end{figure}
 }
