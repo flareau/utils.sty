@@ -1,4 +1,6 @@
 \documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
 \usepackage{utils}
 
 \title{Macros générales \LaTeX}
@@ -23,29 +25,33 @@
 On peut insérer des caractères accentués dans les extraits de code.
 
 \begin{lstlisting}
-\begin{itemize}
-	\item Guillemets de réserve: ce qu'on appelle des \scare{scare quotes}
-	\item Emphase: pour mettre une plus forte \strong{emphase} sur un mot.
-	\item Terme: pour mettre en évidence un nouveau \term{terme} dans le texte.
-	\item Brouillon: \draft{notes rapides, à réécrire clean plus tard}
-\end{itemize}
+text = "Ça marche avec les caractères français comme àéïôù"
+for word in text.split():
+  print(word)
 \end{lstlisting}
 
 
 \section{Figures}
 
-Pour insérer une figure externe, la commande \lstinline{\fig} est pratique. Elle demande trois arguments:
+Pour insérer une figure flottante externe, on peut utiliser la commande \lstinline{\fig}, qui accepte deux ou trois arguments:
 
 \begin{enumerate}
 	\item L'extension du fichier à insérer (cet argument est optionnel; par défaut sa valeur est \lstinline{pdf}).
 	\item Le nom du fichier; cette chaîne de caractères sera aussi le label à utiliser pour les références (avec le préfixe \lstinline{fig:}).
-	\item La légende
+	\item La légende.
 \end{enumerate}
 
-Par exemple, \lstinline|\fig[png]{test}{Une jolie figure}| produit ceci:
+Par exemple, \lstinline|\fig[png]{image}{Une image bidon}| produit la figure~\ref{fig:image}.
 
-\fig[png]{test}{Une jolie figure}
+\fig[png]{image}{Une image bidon}
 
-Le fichier à insérer doit se trouver dans le répertoire \lstinline{figs}. Comme on peut voir à la figure~\ref{fig:test}, un message d'erreur s'affiche si le fichier n'existe pas.
+Si la figure est plus large que la page, elle est automatiquement réduite. Par exemple, la figure~\ref{fig:graphe} a une largeur de plus de 18~cm, mais la commande \lstinline|\fig[png]{graphe}{Un graphe trop large}| en réduit la taille pour ne pas dépasser dans les marges.
+
+\fig[png]{graphe}{Un graphe trop large}
+
+Le fichier à insérer doit se trouver dans le répertoire \lstinline{figs}. Sinon, un message d'erreur s'imprime, comme à la figure~\ref{fig:ghost}.
+
+\fig{ghost}{Une figure manquante}
+
 
 \end{document}

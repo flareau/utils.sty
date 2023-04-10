@@ -10,6 +10,7 @@
 \RequirePackage{relsize}
 \RequirePackage{listings}
 \RequirePackage{textalpha}
+\RequirePackage[export]{adjustbox} % also loads graphicx
 
 
 % General macros
@@ -57,7 +58,7 @@
 		{Ù}{{\`U}}1
 		{Û}{{\^U}}1
 		{Ü}{{\"U}}1
-		{Ç}{{\C{C}}}1
+		{Ç}{{\c{C}}}1
 		{α}{{\textalpha}}1
 }
 
@@ -66,13 +67,14 @@
 % ==========================================
 % Arguments:
 % 	#1 	file extension (optional, default=pdf)
-%		#2	filename, which is also the label (with a fig: prefix)
-%		#3 	caption
+%	#2	filename, which is also the label (with prefix "fig:")
+%	#3 	caption
 
 \providecommand{\fig}[3][pdf]{
 	\begin{figure}[tbh!]
 	\centering
-	\IfFileExists{figs/#2.#1}{\includegraphics{figs/#2}}{{\Huge\bf\color{red}\fbox{Missing: #2.#1}}}
-	\caption{#3}\label{fig:#2}
+	\IfFileExists{figs/#2.#1}{\includegraphics[max width=\textwidth]{figs/#2.#1}}{{\Huge\bf\color{red}\fbox{Missing: #2.#1}}}
+	\caption{#3}
+	\label{fig:#2}
 	\end{figure}
 }
